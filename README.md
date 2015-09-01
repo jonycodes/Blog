@@ -1,4 +1,4 @@
-# Blog
+# Blog+
 Blog+ is a web application based of Google+. This is a simple blog without many functionalities and it's fun to make for a first web Project.  
 
 Index.php
