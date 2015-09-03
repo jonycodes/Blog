@@ -12,9 +12,9 @@ Sept. 1 2015
         <?php
         echo "<h1>Welcome to Blog+</h2>";
         ?>
-        <form>
-            <input type="button" formaction="register.php" value="Register">
-            <input type="button" formaction="login.php" value="Login">
+        <form action="register.php">
+            <input type="submit" value="Register">
+            <input type="submit" formaction="login.php" value="Login">
         </form>
     </body>
 </html>
