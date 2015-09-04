@@ -12,11 +12,19 @@ and open the template in the editor.
     <body>
         <?php
         session_start();
-        if(!($_SESSION['user'])){
+        
+        if($_SESSION['user']){
+        
+        }
+        else{
+        		Print "<script>alert('Please Log in');</script>;";
         	header('location:index.php');
         }
         $user = $_SESSION['user'];
+        
         ?>
+
+        <a href="logout.php">Click here to logout</a>
 
 
 
