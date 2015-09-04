@@ -21,37 +21,45 @@ and open the template in the editor.
          </form>
             
             
-         <?php
-        if ($_SERVER["REQUEST_METHOD"]  == 'POST'){
-
-                $username = mysql_real_escape_string($_POST["username"]);
-                $password = mysql_real_escape_string($_POST["password"]);
-             
-                  $bool = true;
-                  $conn = mysql_connect('localhost', 'root', "");
-                       if (!$conn){
-                        die ("could not connect".mysql_error());
-                       } 
-                  mysql_select_db('first_db');
-                  $querry = mysql_query('SELECT * FROM users');
-                      if(!$querry){
-                        die ('could not access data base'.mysql_error());                     
-                  while($row = mysql_fetch_array($querry)){
-                      $table_users = $row['username'];
-                      if($username == $table_users){
-                        $bool = false;
-                         echo "username exists";
-                         //print '<script>windo.location.assign("register.php");</script>';
-                      }
-                    }
-                      if($bool){
-                        mysql_query("INSERT INTO users (username, password) VALUES ('$username', '$password')");
-                        echo "Successfully enrolled";
-                        //print "<script>windows.location.assign('register.php');</script>";
-                      }
+    <?php
+        if ($_SERVER["REQUEST_METHOD"]  == 'POST')
+        {
+            $username = mysql_real_escape_string($_POST["username"]);
+            $password = mysql_real_escape_string($_POST["password"]);
+            $bool = true;
+            $conn = mysql_connect('localhost', 'root', "");
+                       
+            if (!$conn){
+                die ("could not connect".mysql_error());
+            } 
+                
+            mysql_select_db('first_db');
+            $querry = mysql_query('SELECT * FROM users');
+              
+            if(!$querry){  
+                die ('could not access data base'.mysql_error());
+            }                     
+          
+            while($row = mysql_fetch_array($querry))
+            {
+                
+                $table_users = $row['username'];
+                    
+                if($username == $table_users)
+                {
+                    $bool = false;
+                    Print '<script>alert("username taken");</script>';
+                    Print "<script>window.location.assign('register.php');</script>";
                 }
+            }
+            if($bool)
+            {
+                mysql_query("INSERT INTO users (username, password) VALUES ('$username', '$password')");
+                Print "<script>alert('You have sucessfully enrolled');</script>";
+                        Print "<script>window.location.assign('register.php');</script>";
+            }
+        } 
 
-        
-        ?>
+    ?>
     </body>
 </html>

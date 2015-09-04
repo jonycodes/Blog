@@ -11,7 +11,14 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        session_start();
+        if(!($_SESSION['user'])){
+        	header('location:index.php');
+        }
+        $user = $_SESSION['user'];
         ?>
+
+
+
     </body>
 </html>
