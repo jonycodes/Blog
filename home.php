@@ -53,31 +53,44 @@ and open the template in the editor.
         </div>
        
         <section class="main side-padding">
-        	<div class="col-md-5 container post-box">
+        	<div class="post-box align-center">
         		<form action="add.php" method="POST">	
-				      <textarea name="text" id="text-post" value="Enter Post" cols="30" rows="10"></textarea><br/><br/>
+				      <textarea name="text" id="text-post" value="Enter Post" cols="55" rows="10"></textarea><br/><br/>
+              
 				      <input type="submit" value="Add Post" class="button" />
         		</form>
         	</div>
 
-        	<div class="col-md-5 container post-box right">
-        		<p>
-        		<?php 
-        		  mysql_connect("localhost", "root");
-        		  mysql_select_db("first_db");
-        		  $query = mysql_query("SELECT * FROM list");
-        		  
+        	<?php 
+        		  require("connect.php");
+        		  $post = '';
+              $id = 0;
+              $query = mysql_query("SELECT * FROM list");
               while($row = mysql_fetch_assoc($query))
-        		  {
-                    $post = $row["details"];
-                    $time = $row["time_posted"];
-                    $date = $row["date_posted"];
+              {
+                $id = $row['id'];
               }
-              echo "<p class=''>".$post."</p>";
-
-        		 ?>
-        		 </p>
-        	</div>
+              
+              $count = 1;
+              while($count <= $id)
+              {
+                if($id > 0)
+                {
+                  $query = mysql_query("SELECT * FROM list WHERE id='$count'");
+                  $row = mysql_fetch_assoc($query);
+                  $post = $row["details"];
+                  $time = $row["time_posted"];
+                  $date = $row["date_posted"];
+                  $user = $row["user"];
+                  echo "<br/>
+                  <div class='align-center min-h-small min-small post-box'>Posted by ".$user." at ".$time." on ".$date."<br/><div class='post'>"
+                  .$post.
+                  "</div></div>";
+                }
+                  $count++;
+              }
+          ?>
+        		 
 		</section>
 
     </body>

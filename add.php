@@ -1,6 +1,6 @@
 <?php
 
-$time =  date('g:i', time());  
+$time =  date('g:i:s', time());  
 $date = date ('D M Y');
 $data;
 
@@ -30,13 +30,14 @@ $data;
     	
     }
     
-	function addData($data, $time, $date) 
+	function addData($data, $time, $date, $user) 
 	{
- 		mysql_query("INSERT INTO list (details, date_posted, time_posted) VALUES ('$data', '$date', '$time')") or die("Could not Connect to Data base".mysql_error());
+ 		mysql_query("INSERT INTO list (details, date_posted, time_posted, user) VALUES ('$data', '$date', '$time', '$user')") or die("Could not Connect to Data base".mysql_error());
   	    }
 
-	getPost();
-    addData($data, $time, $date);
-	header("location: home.php");
+	  getPost();
+    $user = $_SESSION['user'];
+    addData($data, $time, $date, $user);
+	  header("location: home.php");
 
 ?>

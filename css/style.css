@@ -6,9 +6,9 @@
  	
 }
 .align-center{
-	display: table;
-	margin-left:auto;
-	margin-right:auto;
+	display: table !important;
+	margin-left:auto !important;
+	margin-right:auto !important;
 }
 .align-left{
 	display:table;
@@ -41,16 +41,32 @@
 .user{
 	padding:2.5% 0 0 0	;
 }
-.post-box{
-border:1px solid black;
-padding:2%;
-}
-.post-box .button{
-   display: block;
-}
+
 .side-padding{
 	padding-right:13%;
 	padding-left:13%;
+}
+
+.max-large{
+    max-width:1200px;
+}
+.max-medium{
+    max-width:900px;
+}
+.max-small{
+	max-width:400px;
+}
+.min-large{
+    min-width:8000px}
+.min-medium{
+    min-width:600px;
+}
+.min-small{
+    min-width:470px;
+}
+
+.min-h-small{
+	min-height:200px;
 }
 
 
@@ -62,4 +78,15 @@ padding:2%;
 }
 .register-form input{
  	display: inline-block;
+}
+.post-box{
+border:1px solid black;
+padding:3%;
+margin:10px 100px;
+}
+
+.post-box .post{
+	padding:2% 0;
+	border-top: 1px solid black;
+	margin:2% 0;
 }

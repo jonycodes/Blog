@@ -38,7 +38,10 @@
 
   
   require('connect.php');
-  checkUser();
+  if(checkUser()==false){
+    echo "Wrong username or password";
+    header('location:login.php');
+  }
 
 	
 ?>

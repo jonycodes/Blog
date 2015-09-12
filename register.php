@@ -86,7 +86,7 @@ and open the template in the editor.
             $message = "<b>You have signed up for Blog+</b>";   
             $sent = mail($to, $subject , $message, $header); 
                 if($sent){
-                    Print "<script>alert('We have sent you and email');</script>";
+                     Print "<script>alert('We have sent you and email');</script>";
                 }
         }
         
