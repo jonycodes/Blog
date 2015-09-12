@@ -1,0 +1,65 @@
+*{
+//border:1px solid black !important;
+}
+
+.profile{
+ 	
+}
+.align-center{
+	display: table;
+	margin-left:auto;
+	margin-right:auto;
+}
+.align-left{
+	display:table;
+	margin-right:auto !important;
+}
+.align-right{
+	display:table;
+   margin-left:auto !important;
+}
+
+.text-right{
+    text-align:right;
+}
+.text-center{
+    text-align:center;
+}
+.text-left{
+ text-align:left;
+}
+.right{
+    float:right;
+}
+.left{
+    float:left;	
+}
+.align-middle{
+	display:table-cell;
+	vertical-align: middle;
+}
+.user{
+	padding:2.5% 0 0 0	;
+}
+.post-box{
+border:1px solid black;
+padding:2%;
+}
+.post-box .button{
+   display: block;
+}
+.side-padding{
+	padding-right:13%;
+	padding-left:13%;
+}
+
+
+/* Index Page Style */
+
+.welcome-msg{
+	display: table;
+	vertical-align: middle;
+}
+.register-form input{
+ 	display: inline-block;
+}

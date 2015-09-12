@@ -8,58 +8,93 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Register Blog+</title>
+        <link rel="stylesheet" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
     </head>
     <body>
+    <div class="header text-center">
         <h2>Registration Page</h2>
-        <a href="index.php">Go Back</a>
-        <form action="register.php" method="POST">
-            Enter username: <input type='text' name='username' autocomplete="off" required/>
-            Enter password: <input type='password' formaction='register.php' name='password' autocomplete="off" required/>
-            First Name: <input type='text' name='fName' value="Required" required/>
-            Last Name: <input type='text' name='lName' value="Required" required/>
-            <input type='submit' value='register'>
-         </form>
-            
+        
+    </div>
+        <div class="register-form align-center text-right">
+            <form action="register.php" method="POST">
+                Enter username: <input type='text' name='username' autocomplete="off" required/><br/>
+                Enter password: <input type='password' formaction='register.php' name='password' autocomplete="off" required/><br/>
+                Enter Email Address' <input type="email" name="email" required/><br/>
+                <input type='submit' value='register' class="align-center">
+            </form>
+            <a href="index.php">Go Back Here</a>
+        </div>    
             
     <?php
-        if ($_SERVER["REQUEST_METHOD"]  == 'POST')
+        $username;
+        $password;
+        $email;
+
+        function getrMethod()
         {
-            $username = mysql_real_escape_string($_POST["username"]);
-            $password = mysql_real_escape_string($_POST["password"]);
-            $bool = true;
-            $conn = mysql_connect('localhost', 'root', "");
-                       
-            if (!$conn){
-                die ("could not connect".mysql_error());
-            } 
-                
-            mysql_select_db('first_db');
-            $querry = mysql_query('SELECT * FROM users');
-              
-            if(!$querry){  
-                die ('could not access data base'.mysql_error());
-            }                     
-          
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            return true;
+               }
+        return false;
+        }
+  
+
+        function getformData()
+        {
+            global $username, $password, $email;
+            if (getrMethod())
+            {
+                $username = mysql_real_escape_string($_POST["username"]);
+                $password = md5($_POST["password"]);
+                $email = mysql_real_escape_string($_POST['email']);
+            }
+        }
+            
+             
+        function checkUser($username){
+            
+            $querry = mysql_query('SELECT username FROM users');
             while($row = mysql_fetch_array($querry))
             {
-                
-                $table_users = $row['username'];
-                    
+                $table_users = $row['username'];       
                 if($username == $table_users)
                 {
-                    $bool = false;
-                    Print '<script>alert("username taken");</script>';
-                    Print "<script>window.location.assign('register.php');</script>";
+                    return false;
                 }
             }
-            if($bool)
-            {
-                mysql_query("INSERT INTO users (username, password) VALUES ('$username', '$password')");
-                Print "<script>alert('You have sucessfully enrolled');</script>";
-                        Print "<script>window.location.assign('register.php');</script>";
-            }
-        } 
+            return true;
+        }
 
+        function addData($username, $password, $email){
+            if(checkUser($username))
+            {    
+                mysql_query("INSERT INTO users (username, password, email) VALUES ('$username', '$password','$email')");
+                echo "You signed up successfully";
+                header("location:login.php");
+            }
+            else{
+                echo "Username taken";
+            }
+        }
+
+        function sendEmail(){
+            $to = $email;
+            $subject = "Blog+";
+            $message = "<h1>Welcome to Blog+</h1>";
+            $message = "<b>You have signed up for Blog+</b>";   
+            $sent = mail($to, $subject , $message, $header); 
+                if($sent){
+                    Print "<script>alert('We have sent you and email');</script>";
+                }
+        }
+        
+
+        require('connect.php');
+        getformData();
+        addData($username, $password, $email); 
+    
     ?>
     </body>
 </html>
