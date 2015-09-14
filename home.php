@@ -54,9 +54,9 @@ and open the template in the editor.
        
         <section class="main side-padding">
         	<div class="post-box align-center">
-        		<form action="add.php" method="POST">	
+        		<form action="add.php" method="POST" enctype="multipart/form-data">	
 				      <textarea name="text" id="text-post" value="Enter Post" cols="55" rows="10"></textarea><br/><br/>
-              
+              <?php require('upload.php') ?>
 				      <input type="submit" value="Add Post" class="button" />
         		</form>
         	</div>
