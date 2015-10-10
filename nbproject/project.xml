@@ -6,6 +6,7 @@
             <name>Blog+</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>php</word>
             <word>Pinales</word>
         </spellchecker-wordlist>
     </configuration>

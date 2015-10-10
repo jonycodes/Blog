@@ -15,8 +15,8 @@ and open the template in the editor.
             Username: <input type='text' name='username' required/>
             Password: <input type='password' name='password' required/>
             <input type='submit' value="Login"/>
-          </form>
-          
+        </form>
+
         <?php
         // put your code here
         ?>

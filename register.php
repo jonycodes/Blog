@@ -13,10 +13,10 @@ and open the template in the editor.
 
     </head>
     <body>
-    <div class="header text-center">
-        <h2>Registration Page</h2>
-        
-    </div>
+        <div class="header text-center">
+            <h2>Registration Page</h2>
+
+        </div>
         <div class="register-form align-center text-right">
             <form action="register.php" method="POST">
                 Enter username: <input type='text' name='username' autocomplete="off" required/><br/>
@@ -26,75 +26,64 @@ and open the template in the editor.
             </form>
             <a href="index.php">Go Back Here</a>
         </div>    
-            
-    <?php
+
+        <?php
         $username;
         $password;
         $email;
 
-        function getrMethod()
-        {
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            return true;
-               }
-        return false;
+        function getrMethod() {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                return true;
+            }
+            return false;
         }
-  
 
-        function getformData()
-        {
+        function getformData() {
             global $username, $password, $email;
-            if (getrMethod())
-            {
+            if (getrMethod()) {
                 $username = mysql_real_escape_string($_POST["username"]);
                 $password = md5($_POST["password"]);
                 $email = mysql_real_escape_string($_POST['email']);
             }
         }
-            
-             
-        function checkUser($username){
-            
+
+        function checkUser($username) {
+
             $querry = mysql_query('SELECT username FROM users');
-            while($row = mysql_fetch_array($querry))
-            {
-                $table_users = $row['username'];       
-                if($username == $table_users)
-                {
+            while ($row = mysql_fetch_array($querry)) {
+                $table_users = $row['username'];
+                if ($username == $table_users) {
                     return false;
                 }
             }
             return true;
         }
 
-        function addData($username, $password, $email){
-            if(checkUser($username))
-            {    
+        function addData($username, $password, $email) {
+            if (checkUser($username)) {
                 mysql_query("INSERT INTO users (username, password, email) VALUES ('$username', '$password','$email')");
                 echo "You signed up successfully";
                 header("location:login.php");
-            }
-            else{
+            } else {
                 echo "Username taken";
             }
         }
 
-        function sendEmail(){
+        function sendEmail() {
             $to = $email;
             $subject = "Blog+";
             $message = "<h1>Welcome to Blog+</h1>";
-            $message = "<b>You have signed up for Blog+</b>";   
-            $sent = mail($to, $subject , $message, $header); 
-                if($sent){
-                     Print "<script>alert('We have sent you and email');</script>";
-                }
+            $message = "<b>You have signed up for Blog+</b>";
+            $sent = mail($to, $subject, $message, $header);
+            if ($sent) {
+                Print "<script>alert('We have sent you and email');</script>";
+            }
         }
-        
 
         require('connect.php');
         getformData();
-        addData($username, $password, $email); 
-    
-    ?>
+        addData($username, $password, $email);
+        ?>
     </body>
 </html>

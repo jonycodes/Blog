@@ -85,8 +85,13 @@ padding:3%;
 margin:10px 100px;
 }
 
+
 .post-box .post{
 	padding:2% 0;
 	border-top: 1px solid black;
 	margin:2% 0;
+}
+.post-box img{
+    width: 400px;
+    height: 300px;    
 }

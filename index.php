@@ -14,7 +14,7 @@ Sept. 1 2015
     <body>
         <div class="welcome-msg container text-center">
             <?php
-                echo "<h1>Welcome to Blog+</h2>";
+            echo "<h1>Welcome to Blog+</h2>";
             ?>
             <form action="register.php" class="align-center">
                 <input type="submit" value="Register">
