@@ -5,16 +5,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+        class post{
+          
+        private $id;
+        function _construct(){
         require("connect.php");
-        $post = '';
-        $id = 0;
-        $query = mysql_query("SELECT * FROM list");
+        $query = mysql_query("SELECT id FROM list");
         while ($row = mysql_fetch_assoc($query)) {
-            $id = $row['id'];
-        }
-
-        while ($id >= 1) {
+            $this->id = $row['id'];
+        }       
+       }
+       
+        private void addPost(){
+                $id = $this->id;
+               while ($id >= 1) {
             if ($id > 0) {
                 $query = mysql_query("SELECT * FROM list WHERE id='$id'");
                 $row = mysql_fetch_assoc($query);
@@ -43,6 +47,19 @@
                 }
             }
             $id--;
+                }   
         }
+        public int findId(){
+                $id = $this->id;
+                while(!(isset($_POST[$id]))){
+                       $id--; 
+                }
+            return $id;    
+        }
+       
+        $this->addPost();
+      
 
-
+ }
+ 
+ 
