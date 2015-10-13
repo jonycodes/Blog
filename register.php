@@ -42,9 +42,9 @@ and open the template in the editor.
         function getformData() {
             global $username, $password, $email;
             if (getrMethod()) {
-                $username = mysql_real_escape_string($_POST["username"]);
+                $username = htmlentities($_POST["username"]);
                 $password = md5($_POST["password"]);
-                $email = mysql_real_escape_string($_POST['email']);
+                $email = htmlentities($_POST['email']);
             }
         }
 
