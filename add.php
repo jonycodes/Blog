@@ -21,9 +21,9 @@ function getrMethod() {
 
 function getPost() {
     if (getrMethod()) {
-        $this->data;
+        global $data;
         /* @var $_POST type */
-        $this->data = htmlentities($_POST['text']);
+        $data = htmlentities($_POST['text']);
     }
 }
 

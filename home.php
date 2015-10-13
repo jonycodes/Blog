@@ -64,7 +64,13 @@ and open the template in the editor.
                $upload->uploadFile();?>          
         </div>
         <?php require('add_post.php');
-              //require('delete.php');
+              
+        if($add = new post()){
+            //echo " creation sucessful ";
+        }
+            if($add->addPost()){
+              //echo " post added ";
+            }
         ?>
         
     </section>

@@ -7,27 +7,32 @@
  */
         class post{
           
-        private $id;
-        function _construct(){
+         private $id = 0;
+
+        function __construct(){
         require("connect.php");
-        $query = mysql_query("SELECT id FROM list");
+        $query = mysql_query("SELECT * FROM list");
         while ($row = mysql_fetch_assoc($query)) {
             $this->id = $row['id'];
         }       
        }
        
-        private void addPost(){
+       
+        public function addPost(){
                 $id = $this->id;
-               while ($id >= 1) {
-            if ($id > 0) {
+                $sessionuser = $_SESSION['user'];
+                
+                while ($id > 1) {
+
                 $query = mysql_query("SELECT * FROM list WHERE id='$id'");
+
                 $row = mysql_fetch_assoc($query);
                 $post = $row["details"];
                 $time = $row["time_posted"];
                 $date = $row["date_posted"];
                 $user = $row["user"];
                 $file_location = $row["file_location"];
-                if ($post != null) {
+                if ($post != null && $sessionuser == $user ) {
                     echo "<br/>
                   <div class='align-center min-h-small min-small post-box'>Posted by <strong> " . strtoupper(substr($user, 0, 1)).substr($user,1) . 
                             " </strong> at " . $time . " on " . $date . "<br/><div class='post'>"
@@ -45,21 +50,17 @@
                      </form>    
                           </div>";
                 }
-            }
             $id--;
                 }   
         }
-        public int findId(){
+        public function findId(){
                 $id = $this->id;
                 while(!(isset($_POST[$id]))){
                        $id--; 
                 }
             return $id;    
         }
-       
-        $this->addPost();
-      
 
  }
- 
+
  

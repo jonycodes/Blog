@@ -6,21 +6,26 @@
  * and open the template in the editor.
  */
 
-require ('connect.php');
+
 require('add_post.php');
 
 $delete = new Post();
 $id = $delete->findId();
 
- function delete(){
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-   if(mysql_query("DELETE * FROM list WHERE id='$id'")){
+ function delete($id){
+ 	
+   if($_SERVER['REQUEST_METHOD'] == 'POST'){
+   	echo $id;
+   if(mysql_query("DELETE FROM list WHERE id='$id'")){
        echo "Delete sucessful";
+     }
+     else{
+     	echo mysql_error();
      }
     }
 }
-delete();
-
+delete($id);
+header ("location: home.php");
 
 ?>
 
