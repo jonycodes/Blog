@@ -5,7 +5,7 @@ $date = date('D M Y');
 $data;
 
 session_start();
-if (!($_SESSION["user"])) {
+if (!(isset($_SESSION["user"]))) {
     header('location:index.php');
 }
 
