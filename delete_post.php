@@ -7,39 +7,20 @@
  */
 
 require ('connect.php');
-  
-function findId(){
-    $query = mysql_query("SELECT id FROM list");
-    while($row = mysql_fetch_assoc($query)){
-       
-    }
-}
-       
-function test(){
-    
-    
-    $id = $_POST['id'];
-    
-    foreach ($id as $key ) {
-        print $key;
-    }
-    
-}
+require('add_post.php');
 
+$delete = new Post();
+$id = $delete->findId();
 
-function hello(){
-    if($_SERVER['REQUEST_METHOD']== 'POST'){
+ function delete(){
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
    if(mysql_query("DELETE * FROM list WHERE id='$id'")){
-       echo "Deletes sucessful";
+       echo "Delete sucessful";
+     }
     }
-    
 }
+delete();
 
-   }
 
-test();
 ?>
 
-<form action="delete.php" method="POST">
-    <input type="submit" value="delete" name="delete">
-</form>
