@@ -2,7 +2,7 @@
 
 $time = date('g:i:s', time());
 $date = date('D M Y');
-$data;
+$data = "";
 
 session_start();
 if (!(isset($_SESSION["user"]))) {
@@ -21,9 +21,9 @@ function getrMethod() {
 
 function getPost() {
     if (getrMethod()) {
-        global $data;
+        $this->data;
         /* @var $_POST type */
-        $data = mysql_real_escape_string($_POST['text']);
+        $this->data = htmlentities($_POST['text']);
     }
 }
 
