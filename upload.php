@@ -50,7 +50,7 @@ public function uploadFile() {
         if ($this->checkfileType()) {
             $this->location = "uploads/" . $_FILES['file']['name'];
             $this->name = $_FILES['file']['tmp_name'];
-            move_uploaded_file($name, $location);
+            move_uploaded_file($this->name, $this->location);
             addtoServer();
             echo "<script>alert('File Upload Sucessful');</script>";
             echo "<script>window.location.assign('home.php');</script>";
