@@ -55,7 +55,8 @@ public function uploadFile() {
             echo "<script>alert('File Upload Sucessful');</script>";
             echo "<script>window.location.assign('home.php');</script>";
             return true;
-        } 
+        }else
+        echo 
     }
 
 
