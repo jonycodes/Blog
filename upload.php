@@ -1,4 +1,9 @@
 
+<form action='upload.php' method='POST' enctype='multipart/form-data'>   
+    <input type='file' name='file'>
+    <input type="submit" value="Add Image" name='file_add'>
+</form>
+
 <?php
  class upload{
 private $name = "";
@@ -69,9 +74,3 @@ private function addtoServer() {
 
 }
 ?>
-<form action='upload.php' method='POST' enctype='multipart/form-data'>
-    
-    <input type='file' name='file'>
-    <input type="submit" value="Add Image" name='file'>
-
-</form>

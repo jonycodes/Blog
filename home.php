@@ -60,8 +60,13 @@ and open the template in the editor.
             </form>
             <?php 
                 include("upload.php");
+
                 $upload = new upload();
-               $upload->uploadFile();?>          
+                if(isset($_POST["file_add"]))
+                {   
+                $upload->uploadFile();
+                }
+                ?>          
         </div>
         <?php require('add_post.php');
               
