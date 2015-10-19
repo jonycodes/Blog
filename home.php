@@ -65,14 +65,8 @@ and open the template in the editor.
             </form>
             </div>
             <?php require('add_post.php');
-            
-        if($add = new post()){
-            //echo " creation sucessful ";
-        }
-            if($add->addPost()){
-              //echo " post added ";
-            }
-        ?>
+            $add = new post();
+            $add->addPost(); ?>
         
     </section>
 
