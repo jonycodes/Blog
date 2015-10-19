@@ -58,18 +58,14 @@ and open the template in the editor.
                 <textarea name="text" id="text-post" value="Enter Post" cols="55" rows="10"></textarea><br/><br/>
                  <input type="submit" value="Add Post" class="button"/><br>
             </form>
-            <?php 
-                include("upload.php");
-
-                $upload = new upload();
-                if(isset($_POST["file_add"]))
-                {   
-                $upload->uploadFile();
-                }
-                ?>          
-        </div>
-        <?php require('add_post.php');
-              
+            <?php  include("upload.php");?>  
+            <form action='upload.php' method='POST' enctype='multipart/form-data'>   
+            <input type='file' name='file'>
+            <input type="submit" value="Add Image" name='file'>
+            </form>
+            </div>
+            <?php require('add_post.php');
+            
         if($add = new post()){
             //echo " creation sucessful ";
         }
