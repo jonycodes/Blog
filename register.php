@@ -22,7 +22,7 @@ and open the template in the editor.
                 Enter username: <input type='text' name='username' autocomplete="off" required/><br/>
                 Enter password: <input type='password' formaction='register.php' name='password' autocomplete="off" required/><br/>
                 Enter Email Address' <input type="email" name="email" required/><br/>
-                <input type='submit' value='register' class="align-center">
+                <input type='submit' value='register' name="submit_data" lass="align-center">
             </form>
             <a href="index.php">Go Back Here</a>
         </div>    
@@ -39,34 +39,41 @@ and open the template in the editor.
             return false;
         }
 
+        function check(){
+            if(isset($_POST['submit_data']))
+                return true;
+            return false;
+        }
+
         function getformData() {
             global $username, $password, $email;
-            if (getrMethod()) {
+            if (getrMethod() && check()) {
                 $username = htmlentities($_POST["username"]);
                 $password = md5($_POST["password"]);
                 $email = htmlentities($_POST['email']);
+                return true;
             }
+          return false;
         }
 
         function checkUser($username) {
-
             $querry = mysql_query('SELECT username FROM users');
             while ($row = mysql_fetch_array($querry)) {
                 $table_users = $row['username'];
                 if ($username == $table_users) {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
         function addData($username, $password, $email) {
-            if (checkUser($username)) {
-                mysql_query("INSERT INTO users (username, password, email) VALUES ('$username', '$password','$email')");
-                echo "You signed up successfully";
-                header("location:login.php");
+            if (!checkUser($username)) {
+                if(mysql_query("INSERT INTO users (username, password, email) VALUES ('$username', '$password','$email')"))
+                return true;
             } else {
-                echo "Username taken";
+
+                return false;
             }
         }
 
@@ -77,13 +84,24 @@ and open the template in the editor.
             $message = "<b>You have signed up for Blog+</b>";
             $sent = mail($to, $subject, $message, $header);
             if ($sent) {
-                Print "<script>alert('We have sent you and email');</script>";
+                return true;
+            }else{
+                return false;
             }
         }
 
+        
+        if(getformData()){
         require('connect.php');
-        getformData();
-        addData($username, $password, $email);
+        if(addData($username, $password, $email)){
+            echo "signed up successfully";
+        }    
+        else{
+            echo mysql_error();
+        }
+        }
+
+        
         ?>
     </body>
 </html>

@@ -57,15 +57,14 @@ and open the template in the editor.
             <form action="add.php" method="POST" enctype="multipart/form-data">	
                 <textarea name="text" id="text-post" value="Enter Post" cols="55" rows="10"></textarea><br/><br/>
                  <input type="submit" value="Add Post" class="button"/><br>
-            </form>
-            <?php  include("upload.php");?>  
+            </form> 
             <form action='upload.php' method='POST' enctype='multipart/form-data'>   
             <input type='file' name='file'>
             <input type="submit" value="Add Image" name='file'>
             </form>
             </div>
-            <?php require('add_post.php');
-            $add = new post();
+            <?php require('init.php');
+            $add = new add_post();
             $add->addPost(); ?>
         
     </section>

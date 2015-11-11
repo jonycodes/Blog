@@ -1,4 +1,5 @@
 <?php
+require_once('connect.php');
 
 $time = date('g:i:s', time());
 $date = date('D M Y');
@@ -10,8 +11,6 @@ if (!(isset($_SESSION["user"]))) {
 }
 
 
-require('connect.php');
-
 function getrMethod() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         return true;
@@ -22,19 +21,18 @@ function getrMethod() {
 function getPost() {
     if (getrMethod()) {
         global $data;
-        /* @var $_POST type */
-        $data = htmlentities($_POST['text']);
+        $data = htmlentities($_POST['text'], ENT_QUOTES);
     }
 }
 
 function addData($data, $time, $date, $user) {
-    mysql_query("INSERT INTO list (details, date_posted, time_posted, user) VALUES ('$data', '$date', '$time', '$user')")
-            or die("Could not Connect to Data base" . mysql_error());
+    echo $date;
+    mysql_query("INSERT INTO list (details, time_posted,date_posted, user) VALUES ('$data', '$time', '$date', '$user')")
+            or die(mysql_error());
 }
 
 getPost();
 $user = $_SESSION['user'];
 addData($data, $time, $date, $user);
 header("location: home.php");
-
 ?>

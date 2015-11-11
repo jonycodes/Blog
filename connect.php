@@ -6,4 +6,6 @@ function connectDataB($database) {
 }
 
 connectDataB('first_db');
+
+
 ?>

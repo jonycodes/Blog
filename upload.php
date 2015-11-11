@@ -38,18 +38,14 @@ function checkfileType() {
  function checkfileSize() {
      global $size;
     if ($size > 4194304) {
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 
  function uploadFile() {    
      global $location, $name;
-        if ($checkfileSize()) {
-                return false;
-            }else
-            
-            if ($checkfileType()) {
+            if (checkfileType() && checkfileSize()) {
             $location = "uploads/" . $_FILES['file']['name'];
             $name = $_FILES['file']['tmp_name'];
                 if(is_uploaded_file($name)){
@@ -58,7 +54,7 @@ function checkfileType() {
                 return true;
                 }
              }  else
-            return false;
+        return false;
     }
 
 
@@ -71,7 +67,6 @@ function checkfileType() {
 }
 
 uploadFile();
-
 header("location: home.php");
 
 ?>

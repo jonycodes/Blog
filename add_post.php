@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-        class post{
+        class add_post{
           
          private $id = 0;
 
@@ -22,7 +22,7 @@
                 $id = $this->id;
                 $sessionuser = $_SESSION['user'];
                 
-                while ($id > 1) {
+                while ($id >= 1) {
 
                 $query = mysql_query("SELECT * FROM list WHERE id='$id'");
 
@@ -40,11 +40,11 @@
                     "</div><form action='delete_post.php' method='POST'> 
                         <input type='submit' value = 'delete post' name = ".$id.">  
                      </form> </div>";
-                }else{
+                }else if($file_location != null){
                     echo "<br/>
                   <div class='align-center min-h-small min-small post-box'>Posted by <strong> " . strtoupper(substr($user, 0, 1)).substr($user,1)  . 
                             " </strong> at " . $time . " on " . $date . "<br/>"
-                            . "<div class='post img align-center'><img src='".urldecode($file_location)."' alt = 'File not found'></div>     
+                            . "<div class='post img align-center'><img src='".urldecode($file_location)."' alt = 'Error loading this file'></div>     
                             <form action='delete_post.php' method='POST'> 
                         <input type='submit' value = 'delete post' name = ".$id.">  
                      </form>    

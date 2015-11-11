@@ -7,9 +7,9 @@
  */
 
 
-require('add_post.php');
+require('init.php');
 
-$delete = new Post();
+$delete = new add_post();
 $id = $delete->findId();
 
  function delete($id){
