@@ -16,6 +16,33 @@
             $this->id = $row['id'];
         }       
        }
+
+       function addText($User, $time, $date, $post, $id){
+             echo "<br/>
+                  <div class='align-center min-h-small min-small post-box'>Posted by <strong> " . $User . 
+                            " </strong> at " . $time . " on " . $date . "<br/><div class='post'>"
+                    . $post .
+                    "</div>
+                    <form action='add.php' method='POST'>
+                    <textarea name = 'comment-data' cols='30' rows='1'>Comment on ".$User.htmlentities("'", ENT_QUOTES)."s post</textarea><br><br>
+                    <input type='submit' value='Comment' class='button' name='comment'>
+                    </form>
+                    <form action='delete_post.php' method='POST'> 
+                    <input type='submit' value = 'delete post' name = ".$id.">  
+                    </form> 
+                    </div>";
+        }
+
+        function addPicture($User, $time, $date, $file_location, $id){
+              echo "<br/>
+                  <div class='align-center min-h-small min-small post-box'>Posted by <strong> " . $User . 
+                            " </strong> at " . $time . " on " . $date . "<br/>"
+                            . "<div class='post img align-center'><img src='".urldecode($file_location)."' alt = 'Error loading this file'></div>     
+                            <form action='delete_post.php' method='POST'> 
+                        <input type='submit' value = 'delete post' name = ".$id.">  
+                     </form>    
+                          </div>";
+        }
        
        
         public function addPost(){
@@ -23,36 +50,23 @@
                 $sessionuser = $_SESSION['user'];
                 
                 while ($id >= 1) {
-
                 $query = mysql_query("SELECT * FROM list WHERE id='$id'");
-
                 $row = mysql_fetch_assoc($query);
                 $post = $row["details"];
                 $time = $row["time_posted"];
                 $date = $row["date_posted"];
                 $user = $row["user"];
                 $file_location = $row["file_location"];
+                $User = strtoupper(substr($user, 0, 1)).substr($user,1);
                 if ($post != null && $sessionuser == $user ) {
-                    echo "<br/>
-                  <div class='align-center min-h-small min-small post-box'>Posted by <strong> " . strtoupper(substr($user, 0, 1)).substr($user,1) . 
-                            " </strong> at " . $time . " on " . $date . "<br/><div class='post'>"
-                    . $post .
-                    "</div><form action='delete_post.php' method='POST'> 
-                        <input type='submit' value = 'delete post' name = ".$id.">  
-                     </form> </div>";
+                        $this->addText($User, $time, $date, $post, $id);
                 }else if($file_location != null){
-                    echo "<br/>
-                  <div class='align-center min-h-small min-small post-box'>Posted by <strong> " . strtoupper(substr($user, 0, 1)).substr($user,1)  . 
-                            " </strong> at " . $time . " on " . $date . "<br/>"
-                            . "<div class='post img align-center'><img src='".urldecode($file_location)."' alt = 'Error loading this file'></div>     
-                            <form action='delete_post.php' method='POST'> 
-                        <input type='submit' value = 'delete post' name = ".$id.">  
-                     </form>    
-                          </div>";
+                        $this->addPicture($user, $time, $date, $file_location, $id);
                 }
             $id--;
                 }   
-        }
+        }    
+
         public function findId(){
                 $id = $this->id;
                 while(!(isset($_POST[$id]))){
@@ -60,6 +74,7 @@
                 }
             return $id;    
         }
+
 
  }
 
