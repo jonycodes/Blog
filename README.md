@@ -4,7 +4,9 @@ Fully Functional!
 Blog+ is a basic and fun web application I made to learn PHP, it's great for beginners to learn basic object oriented PHP concepts. You can go a step further and implement friends, comments, and profile features. 
 
 Database setup:
+	
 	Database name: "first_db"
+	
 	table name: "list"
 		columns: 
 	 		"details" - text
