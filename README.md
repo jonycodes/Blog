@@ -45,43 +45,55 @@ Main features:
 Main PHP classes:
 
 add.php
+
 	Uploads text and images to the server.
 	Texts are stored in the data base
 	Image posts are stored in the server and its location refernce in the database
 	!!MAKE SURE TO CREATE "uploads" FILE FOR IMAGES ON ROOT DIRECTORY!! Ex: in Blog/uploads
 
 add_post.php
+
 	Loads text and image posts into the Home page
 
 checklogin.php
+
 	authenticaion 
 
-connect.php 
+connect.php
+
 	connects to the database
 
 delete_post.php
+
 	deletes the post
 
 home.php
+
 	main home page of each user
 	displays all post: private if they're from the user and all public post from other users	
 
 index.php
+
 	main page to register or login
 
 init.php
+
 	autoload classes
 
 linkedlist.php
+
 	originally set up to store comments from the database but comments feature is turned off
 
 login.php
+
 	login form
 
 logout.php
+
 	logs user out
 
 register.php
+
 	register form
 	checks for same user name
 
