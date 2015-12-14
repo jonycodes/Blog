@@ -15,11 +15,13 @@ function getId() {
 }
 
 function delete() {
+	
 	$id = getId();
-	echo $id;
+	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		mysql_query("DELETE FROM list WHERE id='$id'") or mysql_error();
 	}
+
 }
 delete();
 header("location: home.php");
