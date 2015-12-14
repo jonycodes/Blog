@@ -65,6 +65,10 @@
     min-width:470px;
 }
 
+.min-x-small{
+	min-width:350px;
+}
+
 .min-h-small{
 	min-height:200px;
 }
@@ -80,11 +84,21 @@
  	display: inline-block;
 }
 .post-box{
-border:1px solid black;
-padding:3%;
-margin:10px 100px;
+	border:1px solid black;
+	padding:3%;
+	margin:10px 100px;
 }
 
+.comment-box{
+	padding:1%;
+	margin:10px 50px;	
+}
+
+.comment-box .post{
+	padding:2% 0;
+	border-top: 1px solid black;
+	margin:2% 0;
+}
 
 .post-box .post{
 	padding:2% 0;

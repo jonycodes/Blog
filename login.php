@@ -16,9 +16,5 @@ and open the template in the editor.
             Password: <input type='password' name='password' required/>
             <input type='submit' value="Login"/>
         </form>
-
-        <?php
-        // put your code here
-        ?>
     </body>
 </html>
