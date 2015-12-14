@@ -80,7 +80,7 @@ init.php
 
 	autoload classes
 
-linkedlist.php
+linklist.php
 
 	originally set up to store comments from the database but comments feature is turned off
 
