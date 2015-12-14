@@ -11,9 +11,10 @@ Database setup:
 	 		"time_posted" - time
 			"date_posted" - varchar - 50
 			"user" - varchar - 50
-	       	"file_location" - varchar - 50
-  	    	"id" - int - auto increment - primary key
+		       	"file_location" - varchar - 50
+  	    		"id" - int - auto increment - primary key
 			"status" - varchar - 50
+	
 	table name: "user"
 		columns:
 			"id" - auto increment - primary key
