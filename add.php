@@ -77,9 +77,7 @@ function getformName() {
 function isPublic() {
 
         if (isset($_POST['public'])) {
-                if ($_POST['public'] == 'public') {
-                        return 'public';
-                }
+                return 'public';
         } else {
                 return 'private';
         }
@@ -150,8 +148,6 @@ function uploadFile() {
 function addtoServer($time, $date, $location) {
 
         $status = isPublic();
-
-        echo $status;
 
         $user = $_SESSION['user'];
 

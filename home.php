@@ -62,6 +62,7 @@ $user = $_SESSION['user'];
             </form>
             <form action='add.php' method='POST' enctype='multipart/form-data'>
                 <input type='file' name='file'>
+                Public? <input type="checkbox" name="public" value="public"><br>
                 <input type="submit" value="Add Image" name='file'>
             </form>
         </div>
