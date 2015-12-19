@@ -1,4 +1,5 @@
 <?php
+
 /*
  *This form is set up to handle Text and Images inputs,
  *as well as Comments input in case you want to implement it
@@ -16,7 +17,7 @@ $data = "";
 session_start();
 
 if (!(isset($_SESSION["user"]))) {
-        header('location:index.php');
+        header('location: ../index.php');
 }
 
 function checkformName() {
@@ -133,7 +134,7 @@ function uploadFile() {
         global $location, $name, $size, $time, $date;
 
         if (checkfileType() && $size < 4194304) {
-                $location = "uploads/" . $_FILES['file']['name'];
+                $location = "../uploads/" . $_FILES['file']['name'];
                 $name = $_FILES['file']['tmp_name'];
                 if (is_uploaded_file($name)) {
                         move_uploaded_file($name, $location);

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -8,8 +9,8 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Register Blog+</title>
-        <link rel="stylesheet" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
         <div class="header text-center">
@@ -22,7 +23,7 @@ and open the template in the editor.
                 Enter Email Address' <input type="email" name="email" required/><br/>
                 <input type='submit' value='register' name="submit_data" lass="align-center">
             </form>
-            <a href="index.php">Go Back Here</a>
+            <a href="../index.php">Go Back Here</a>
         </div>
         <?php
 $username;

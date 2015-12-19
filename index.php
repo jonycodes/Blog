@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 Created by Joannier Pinales
@@ -16,9 +17,9 @@ Sept. 1 2015
             <?php
             echo "<h1>Welcome to Blog+</h2>";
             ?>
-            <form action="register.php" class="align-center">
+            <form action="PHP/register.php" class="align-center">
                 <input type="submit" value="Register">
-                <input type="submit" formaction="login.php" value="Login">
+                <input type="submit" formaction="PHP/login.php" value="Login">
             </form>
         </div>
     </body>

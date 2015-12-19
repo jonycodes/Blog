@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -7,8 +8,8 @@ and open the template in the editor.
 <head>
     <meta charset="UTF-8">
     <title>Blog+ Home</title>
-    <link rel="stylesheet" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap-3.3.4-dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 <body>
     <?php
@@ -57,12 +58,12 @@ $user = $_SESSION['user'];
         <div class="post-box min-medium align-center">
             <form action="add.php" method="POST">
                 <textarea name="text" id="text-post" value="Enter Post" cols="55" rows="10"></textarea><br/><br/>
-                Public? <input type="checkbox" name="public" value="public"><br>
+                Public? <input type="checkbox" name="public" value="public">
                 <input type="submit" value="Add Post" class="button" name="text-post"><br>
             </form>
             <form action='add.php' method='POST' enctype='multipart/form-data'>
                 <input type='file' name='file'>
-                Public? <input type="checkbox" name="public" value="public"><br>
+                Public? <input type="checkbox" name="public" value="public">
                 <input type="submit" value="Add Image" name='file'>
             </form>
         </div>
